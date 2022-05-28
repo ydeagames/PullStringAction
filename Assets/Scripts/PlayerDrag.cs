@@ -14,6 +14,8 @@ public class PlayerDrag : MonoBehaviour
     private Rigidbody2D _rigidbody;
     private Plane _plane = new Plane(Vector3.forward, Vector3.zero);
 
+    public LayerMask stageLayer;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -46,6 +48,15 @@ public class PlayerDrag : MonoBehaviour
             if (Input.GetMouseButtonUp(0))
             {
                 Debug.Log("jump: " + _deltaPosition);
+                if (_deltaPosition.y > 0)
+                {
+                    var hit = Physics2D.Raycast(transform.position, Vector2.down, 1, stageLayer);
+                    if (hit.collider)
+                    {
+                        var platform = hit.collider.GetComponent<SoftPlatform>();
+                        platform.PassThrough();
+                    }
+                }
                 _rigidbody.AddForce(_deltaPosition * -force);
             }
         }
