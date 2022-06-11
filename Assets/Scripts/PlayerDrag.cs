@@ -17,6 +17,8 @@ public class PlayerDrag : MonoBehaviour
 
     public LayerMask stageLayer;
 
+    public PlayerHP playerHP;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -58,6 +60,9 @@ public class PlayerDrag : MonoBehaviour
                     }
                 }
                 _rigidbody.AddForce(_deltaPosition * -force);
+
+                // HPå∏è≠
+                playerHP.Jump();
             }
         }
         _spriteRenderer.localPosition = _spritePosition + _deltaPosition;

@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1945756289}
   - component: {fileID: 1945756290}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Sprite
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -91,7 +91,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1973257635}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Circle
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -126,7 +126,8 @@ GameObject:
   - component: {fileID: 2127925359239225443}
   - component: {fileID: 2127925359239225454}
   - component: {fileID: 4606721897470486305}
-  m_Layer: 0
+  - component: {fileID: 837871747}
+  m_Layer: 8
   m_Name: Player
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -207,6 +208,7 @@ MonoBehaviour:
   stageLayer:
     serializedVersion: 2
     m_Bits: 64
+  playerHP: {fileID: 837871747}
 --- !u!114 &4606721897470486305
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -220,6 +222,22 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 3
+--- !u!114 &837871747
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2127925359239225442}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5baa1fbdaddaa26478af757e5141d4c0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  maxHp: 100
+  hp: 100
+  jumpHpDrain: 5
+  spriteRenderer: {fileID: 1945756290}
 --- !u!1 &2127925360090474503
 GameObject:
   m_ObjectHideFlags: 0
@@ -231,7 +249,7 @@ GameObject:
   - component: {fileID: 2127925360090474498}
   - component: {fileID: 2127925360090474501}
   - component: {fileID: 2127925360090474500}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Sprite
   m_TagString: Untagged
   m_Icon: {fileID: 0}
