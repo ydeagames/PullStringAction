@@ -9,6 +9,7 @@ public class PlayerHP : MonoBehaviour
     public float hp = 100;
     public float jumpHpDrain = 1;
     public AudioSource jumpSound;
+    public AudioClip deathSound;
 
     public SpriteRenderer spriteRenderer;
 
@@ -35,8 +36,17 @@ public class PlayerHP : MonoBehaviour
 
         if (hp <= 0)
         {
-            SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+            StartCoroutine(Death());
         }
+    }
+
+    IEnumerator Death()
+    {
+        AudioSource.PlayClipAtPoint(deathSound, transform.position);
+
+        yield return new WaitForSeconds(1);
+
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
     }
 
     public void Heal()
