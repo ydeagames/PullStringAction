@@ -2507,10 +2507,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: Player
       objectReference: {fileID: 0}
-    - target: {fileID: 2127925359239225454, guid: ac7de48e61c3f0c42b1d6be201d90cec, type: 3}
-      propertyPath: jumpSound
-      value: 
-      objectReference: {fileID: 8300000, guid: fe840a7a62cab0a4aa3c26b22f8fb681, type: 3}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ac7de48e61c3f0c42b1d6be201d90cec, type: 3}
 --- !u!1001 &3721286579640850564

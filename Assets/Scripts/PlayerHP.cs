@@ -8,6 +8,7 @@ public class PlayerHP : MonoBehaviour
     public float maxHp = 100;
     public float hp = 100;
     public float jumpHpDrain = 1;
+    public AudioSource jumpSound;
 
     public SpriteRenderer spriteRenderer;
 
@@ -21,11 +22,16 @@ public class PlayerHP : MonoBehaviour
     void Update()
     {
         spriteRenderer.color = Color.Lerp(Color.red, Color.white, hp / maxHp);
+
+        jumpSound.pitch = Mathf.Lerp(1, 2, hp / maxHp);
     }
 
     public void Jump()
     {
         hp -= jumpHpDrain;
+
+        // ƒWƒƒƒ“ƒv‰¹
+        jumpSound.Play();
 
         if (hp <= 0)
         {
