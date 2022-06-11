@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class Healer : MonoBehaviour
 {
+    public AudioClip waterSound;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -22,6 +24,9 @@ public class Healer : MonoBehaviour
         if (hp != null)
         {
             hp.Heal();
+
+            // íÖêÖâπ
+            AudioSource.PlayClipAtPoint(waterSound, transform.position);
         }
     }
 }

@@ -18,6 +18,7 @@ public class PlayerDrag : MonoBehaviour
     public LayerMask stageLayer;
 
     public PlayerHP playerHP;
+    public AudioClip jumpSound;
 
     // Start is called before the first frame update
     void Start()
@@ -63,6 +64,9 @@ public class PlayerDrag : MonoBehaviour
 
                 // HPå∏è≠
                 playerHP.Jump();
+
+                // ÉWÉÉÉìÉvâπ
+                AudioSource.PlayClipAtPoint(jumpSound, transform.position);
             }
         }
         _spriteRenderer.localPosition = _spritePosition + _deltaPosition;
