@@ -10,8 +10,8 @@ public class PlayerDrag : MonoBehaviour
     public Vector3 _spritePosition;
     public Vector3 _deltaPosition;
 
-    public SpriteRenderer _spriteRenderer;
-    public SpriteRenderer _spriteRendererStretch;
+    public Transform _spriteRenderer;
+    public Transform _spriteRendererStretch;
     private Rigidbody2D _rigidbody;
     private Plane _plane = new Plane(Vector3.forward, Vector3.zero);
 
@@ -35,7 +35,7 @@ public class PlayerDrag : MonoBehaviour
             if (Input.GetMouseButtonDown(0))
             {
                 _clickPosition = mousePosition;
-                _spritePosition = _spriteRenderer.transform.localPosition;
+                _spritePosition = _spriteRenderer.localPosition;
             }
             if (Input.GetMouseButton(0))
             {
@@ -60,16 +60,16 @@ public class PlayerDrag : MonoBehaviour
                 _rigidbody.AddForce(_deltaPosition * -force);
             }
         }
-        _spriteRenderer.transform.localPosition = _spritePosition + _deltaPosition;
+        _spriteRenderer.localPosition = _spritePosition + _deltaPosition;
 
-        var angle = _spriteRendererStretch.transform.localEulerAngles;
+        var angle = _spriteRendererStretch.localEulerAngles;
         angle.z = Mathf.Atan2(_deltaPosition.y, _deltaPosition.x);
-        _spriteRendererStretch.transform.localEulerAngles = Mathf.Rad2Deg * angle;
+        _spriteRendererStretch.localEulerAngles = Mathf.Rad2Deg * angle;
 
         _spriteRendererStretch.transform.localPosition = _deltaPosition / 2;
 
-        var scale = _spriteRendererStretch.transform.localScale;
-        scale.x = _deltaPosition.magnitude;
-        _spriteRendererStretch.transform.localScale = scale;
+        var scale = _spriteRendererStretch.localScale;
+        scale.x = 1 + _deltaPosition.magnitude * 2;
+        _spriteRendererStretch.localScale = scale;
     }
 }
