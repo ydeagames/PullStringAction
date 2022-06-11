@@ -10,7 +10,8 @@ public class PlayerDrag : MonoBehaviour
     public Vector3 _spritePosition;
     public Vector3 _deltaPosition;
 
-    private SpriteRenderer _spriteRenderer;
+    public SpriteRenderer _spriteRenderer;
+    public SpriteRenderer _spriteRendererStretch;
     private Rigidbody2D _rigidbody;
     private Plane _plane = new Plane(Vector3.forward, Vector3.zero);
 
@@ -19,7 +20,6 @@ public class PlayerDrag : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        _spriteRenderer = GetComponentInChildren<SpriteRenderer>();
         _rigidbody = GetComponent<Rigidbody2D>();
     }
 
@@ -61,5 +61,15 @@ public class PlayerDrag : MonoBehaviour
             }
         }
         _spriteRenderer.transform.localPosition = _spritePosition + _deltaPosition;
+
+        var angle = _spriteRendererStretch.transform.localEulerAngles;
+        angle.z = Mathf.Atan2(_deltaPosition.y, _deltaPosition.x);
+        _spriteRendererStretch.transform.localEulerAngles = Mathf.Rad2Deg * angle;
+
+        _spriteRendererStretch.transform.localPosition = _deltaPosition / 2;
+
+        var scale = _spriteRendererStretch.transform.localScale;
+        scale.x = _deltaPosition.magnitude;
+        _spriteRendererStretch.transform.localScale = scale;
     }
 }
